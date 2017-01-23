@@ -25,6 +25,7 @@
 
 #include <thread>
 #include <algorithm>
+#include <chrono>
 #include <locale.h>
 #include <signal.h>
 #include <stdlib.h>
@@ -486,7 +487,7 @@ int main( int argc, char** argv )
                 double sSinceStart = sInitializerOffset + ((tv_now.tv_sec-tv_start.tv_sec) + (tv_now.tv_usec-tv_start.tv_usec)/(1000.0f*1000.0f));
 
                 if(sSinceStart < timesToPlayAt[ii])
-                    usleep((int)((timesToPlayAt[ii]-sSinceStart)*1000*1000));
+                	std::this_thread::sleep_for(std::chrono::microseconds((int)((timesToPlayAt[ii]-sSinceStart)*1000*1000)));
                 else if(sSinceStart > timesToPlayAt[ii]+0.5+0.1*(ii%2))
                 {
                     printf("SKIPFRAME %d (play at %f, now it is %f)!\n", ii, timesToPlayAt[ii], sSinceStart);
