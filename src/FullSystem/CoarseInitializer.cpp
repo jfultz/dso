@@ -920,7 +920,7 @@ void CoarseInitializer::applyStep(int lvl)
 		pts[i].idepth = pts[i].idepth_new;
 		pts[i].lastHessian = pts[i].lastHessian_new;
 	}
-	std::swap<Vec10f*>(JbBuffer, JbBuffer_new);
+	std::swap(JbBuffer, JbBuffer_new);
 }
 
 void CoarseInitializer::makeK(CalibHessian* HCalib)

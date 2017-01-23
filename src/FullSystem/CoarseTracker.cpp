@@ -924,7 +924,7 @@ void CoarseDistanceMap::growDistBFS(int bfsNum)
 	for(int k=1;k<40;k++)
 	{
 		int bfsNum2 = bfsNum;
-		std::swap<Eigen::Vector2i*>(bfsList1,bfsList2);
+		std::swap(bfsList1,bfsList2);
 		bfsNum=0;
 
 		if(k%2==0)

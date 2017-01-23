@@ -35,9 +35,9 @@
 namespace dso
 {
 
-class FrameHessian;
-class CalibHessian;
-class FrameShell;
+struct FrameHessian;
+struct CalibHessian;
+struct FrameShell;
 
 
 namespace IOWrap

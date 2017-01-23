@@ -24,11 +24,14 @@
 
 
 #include <thread>
+#include <algorithm>
 #include <locale.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
+#ifndef _MSC_VER
 #include <unistd.h>
+#endif
 
 #include "IOWrapper/Output3DWrapper.h"
 #include "IOWrapper/ImageDisplay.h"
@@ -73,6 +76,7 @@ bool firstRosSpin=false;
 using namespace dso;
 
 
+#ifndef _MSC_VER
 void my_exit_handler(int s)
 {
 	printf("Caught signal %d\n",s);
@@ -90,7 +94,7 @@ void exitThread()
 	firstRosSpin=true;
 	while(true) pause();
 }
-
+#endif // _MSC_VER
 
 
 void settingsDefault(int preset)
@@ -359,7 +363,9 @@ int main( int argc, char** argv )
 		parseArgument(argv[i]);
 
 	// hook crtl+C.
+#ifndef _MSC_VER
 	boost::thread exThread = boost::thread(exitThread);
+#endif // _MSC_VER
 
 
 	ImageFolderReader* reader = new ImageFolderReader(source,calib, gammaCalib, vignette);

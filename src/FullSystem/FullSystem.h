@@ -27,7 +27,9 @@
 
 #include "util/NumType.h"
 #include "util/globalCalib.h"
-#include "vector"
+#include <vector>
+#include <deque>
+#include <utility>
  
 #include <iostream>
 #include <fstream>
