@@ -150,7 +150,7 @@ PointHessian* FullSystem::optimizeImmaturePoint(
 	if(!std::isfinite(currentIdepth))
 	{
 		printf("MAJOR ERROR! point idepth is nan after initialization (%f).\n", currentIdepth);
-		return (PointHessian*)((long)(-1));		// yeah I'm like 99% sure this is OK on 32bit systems.
+		return (PointHessian*)((uintptr_t)(-1));		// yeah I'm like 99% sure this is OK on 32bit systems.
 	}
 
 
@@ -161,13 +161,13 @@ PointHessian* FullSystem::optimizeImmaturePoint(
 	if(numGoodRes < minObs)
 	{
 		if(print) printf("OptPoint: OUTLIER!\n");
-		return (PointHessian*)((long)(-1));		// yeah I'm like 99% sure this is OK on 32bit systems.
+		return (PointHessian*)((uintptr_t)(-1));		// yeah I'm like 99% sure this is OK on 32bit systems.
 	}
 
 
 
 	PointHessian* p = new PointHessian(point, &Hcalib);
-	if(!std::isfinite(p->energyTH)) {delete p; return (PointHessian*)((long)(-1));}
+	if(!std::isfinite(p->energyTH)) {delete p; return (PointHessian*)((uintptr_t)(-1));}
 
 	p->lastResiduals[0].first = 0;
 	p->lastResiduals[0].second = ResState::OOB;

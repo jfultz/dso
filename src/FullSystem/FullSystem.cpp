@@ -654,7 +654,7 @@ void FullSystem::activatePointsMT()
 		PointHessian* newpoint = optimized[k];
 		ImmaturePoint* ph = toOptimize[k];
 
-		if(newpoint != 0 && newpoint != (PointHessian*)((long)(-1)))
+		if(newpoint != 0 && newpoint != (PointHessian*)((uintptr_t)(-1)))
 		{
 			newpoint->host->immaturePoints[ph->idxInImmaturePoints]=0;
 			newpoint->host->pointHessians.push_back(newpoint);
@@ -664,14 +664,14 @@ void FullSystem::activatePointsMT()
 			assert(newpoint->efPoint != 0);
 			delete ph;
 		}
-		else if(newpoint == (PointHessian*)((long)(-1)) || ph->lastTraceStatus==IPS_OOB)
+		else if(newpoint == (PointHessian*)((uintptr_t)(-1)) || ph->lastTraceStatus==IPS_OOB)
 		{
 			delete ph;
 			ph->host->immaturePoints[ph->idxInImmaturePoints]=0;
 		}
 		else
 		{
-			assert(newpoint == 0 || newpoint == (PointHessian*)((long)(-1)));
+			assert(newpoint == 0 || newpoint == (PointHessian*)((uintptr_t)(-1)));
 		}
 	}
 

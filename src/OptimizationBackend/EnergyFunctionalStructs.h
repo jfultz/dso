@@ -59,8 +59,8 @@ public:
 		isLinearized=false;
 		isActiveAndIsGoodNEW=false;
 		J = new RawResidualJacobian();
-		assert(((long)this)%16==0);
-		assert(((long)J)%16==0);
+		assert(((uintptr_t)this)%16==0);
+		assert(((uintptr_t)J)%16==0);
 	}
 	inline ~EFResidual()
 	{

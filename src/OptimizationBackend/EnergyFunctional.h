@@ -114,7 +114,7 @@ public:
 	IndexThreadReduce<Vec10>* red;
 
 
-	std::map<long,Eigen::Vector2i> connectivityMap;
+	std::map<uintptr_t,Eigen::Vector2i> connectivityMap;
 
 private:
 

@@ -56,13 +56,13 @@ public:
             printf("OUT: Destroyed SampleOutputWrapper\n");
         }
 
-        virtual void publishGraph(const std::map<long,Eigen::Vector2i> &connectivity)
+        virtual void publishGraph(const std::map<uintptr_t,Eigen::Vector2i> &connectivity)
         {
             printf("OUT: got graph with %d edges\n", (int)connectivity.size());
 
             int maxWrite = 5;
 
-            for(const std::pair<long,Eigen::Vector2i> &p : connectivity)
+            for(const std::pair<uintptr_t,Eigen::Vector2i> &p : connectivity)
             {
                 int idHost = p.first>>32;
                 int idTarget = p.first & 0xFFFFFFFF;
